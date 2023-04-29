@@ -4,6 +4,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.support.converter.JsonMessageConverter;
 
 import java.util.List;
 
@@ -27,5 +28,10 @@ public class DemoApplication {
 			List<Book> dtb = bookRepository.findAll();
 			dtb.stream().forEach(book -> System.out.println(book.getTitle()));
 		};
+	}
+
+	@Bean
+	JsonMessageConverter jsonMessageConverter(){
+		return new JsonMessageConverter();
 	}
 }
