@@ -14,7 +14,7 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-
+;
 	@Bean
 	ApplicationRunner applicationRunner(AuthorRepository authorRepository, BookRepository bookRepository) {
 		return args -> {

@@ -14,12 +14,12 @@ public class KafkaProducerApplication {
 
     @Bean
     NewTopic noti(){
-        return new NewTopic("noti",2,(short) 1);
+        return new NewTopic("noti",2,(short) 3);
     }
 
     @Bean
     NewTopic stat(){
-        return new NewTopic("stat",2,(short) 1);
+        return new NewTopic("stat",2,(short) 3);
     }
 
 }
