@@ -16,6 +16,12 @@ public class StatService {
     @KafkaListener(id="statService",topics = "stat")
     public void listen(StatDTO statDTO){
         logger.info("received: "+statDTO.getMessage());
-        statRepository.save(statDTO);
+//        statRepository.save(statDTO);
+        throw new RuntimeException();
+    }
+
+    @KafkaListener(id = "dltGroup", topics = "stat.DLT")
+    public void dltGroupListener(StatDTO statDTO) {
+        logger.info("received on Statistic DLT Topics: " + statDTO.getMessage());
     }
 }
