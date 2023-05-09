@@ -1,6 +1,8 @@
 package com.example.kafkaconsumer;
 
 import com.example.kafkaconsumer.model.MessageDTO;
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +23,7 @@ import java.util.Properties;
 public class KafkaConsumerApplication {
 
     public static void main(String[] args) {
+//        Server server = ServerBuilder.forPort(5555).addService(new )
         SpringApplication.run(KafkaConsumerApplication.class, args);
     }
 

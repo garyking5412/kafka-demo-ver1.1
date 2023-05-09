@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.annotation.RetryableTopic;
+import org.springframework.retry.annotation.Backoff;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +15,9 @@ public class StatService {
     @Autowired
     private StatRepository statRepository;
 
-    @KafkaListener(id="statService",topics = "stat")
+
+//    @RetryableTopic(attempts = "3",dltTopicSuffix = "-dlt",backoff = @Backoff(delay = 2_000,multiplier = 3))
+    @KafkaListener(id="TXTHAIstatService",topics = "stat")
     public void listen(StatDTO statDTO){
         logger.info("received: "+statDTO.getMessage());
 //        statRepository.save(statDTO);
@@ -24,4 +28,8 @@ public class StatService {
     public void dltGroupListener(StatDTO statDTO) {
         logger.info("received on Statistic DLT Topics: " + statDTO.getMessage());
     }
+//    @KafkaListener(id="dltTXTHAIGroup",topics = "stat-dlt")
+//    public void dltRetryableGroupListener(StatDTO statDTO){
+//        logger.info("received on Statistic TXTHAI DLT Topics: " + statDTO.getMessage());
+//    }
 }

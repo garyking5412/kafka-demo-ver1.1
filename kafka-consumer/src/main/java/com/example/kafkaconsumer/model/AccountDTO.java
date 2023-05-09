@@ -1,4 +1,4 @@
-package com.example.kafkaproducer.model;
+package com.example.kafkaconsumer.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
