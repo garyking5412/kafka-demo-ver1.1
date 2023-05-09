@@ -20,13 +20,7 @@ public class StatService {
     @KafkaListener(id="TXTHAIstatService",topics = "stat")
     public void listen(StatDTO statDTO){
         logger.info("received: "+statDTO.getMessage());
-//        statRepository.save(statDTO);
-        throw new RuntimeException();
-    }
-
-    @KafkaListener(id = "dltGroup", topics = "stat.DLT")
-    public void dltGroupListener(StatDTO statDTO) {
-        logger.info("received on Statistic DLT Topics: " + statDTO.getMessage());
+        statRepository.save(statDTO);
     }
 //    @KafkaListener(id="dltTXTHAIGroup",topics = "stat-dlt")
 //    public void dltRetryableGroupListener(StatDTO statDTO){
