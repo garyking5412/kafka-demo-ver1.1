@@ -1,11 +1,14 @@
 package com.example.demo;
 
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.support.converter.JsonMessageConverter;
 
+import java.io.IOException;
 import java.util.List;
 
 @SpringBootApplication
@@ -16,7 +19,10 @@ public class DemoApplication {
 	}
 ;
 	@Bean
-	ApplicationRunner applicationRunner(AuthorRepository authorRepository, BookRepository bookRepository) {
+	ApplicationRunner applicationRunner(AuthorRepository authorRepository, BookRepository bookRepository) throws IOException, InterruptedException {
+		Server server = ServerBuilder.forPort(5555).addService(new StatService()).build();
+		server.start();
+		server.awaitTermination();
 		return args -> {
 			Author john = authorRepository.save(new Author(null, "John Wick"));
 			Author winston = authorRepository.save(new Author(null, "Winston Churchill"));

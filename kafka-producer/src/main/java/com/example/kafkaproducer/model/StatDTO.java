@@ -8,8 +8,10 @@ import java.util.Date;
 
 @Data
 public class StatDTO {
+    private int id;
     private String message;
     private Date createdDate;
+    private boolean status;
 
     public StatDTO(String s, Date date) {
         this.message=s;

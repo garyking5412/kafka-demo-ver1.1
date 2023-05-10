@@ -17,7 +17,7 @@ public class StatDTO {
     private Integer id;
     private String message;
     private Date createdDate;
-
+    private boolean status;
 //    public StatDTO(String s, Date date) {
 //        this.message=s;
 //        this.createdDate=date;

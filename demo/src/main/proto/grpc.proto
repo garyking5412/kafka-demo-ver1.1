@@ -1,0 +1,23 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+option java_multiple_files = true;
+option java_package = "com.example.demo.schema";
+package com.example.demo;
+
+message StatDTO{
+  int64 id = 1;
+  string message = 2;
+  int64 timestamp = 3;
+  bool status = 4;
+}
+message nullParams{}
+message getStatByIdParams{
+  int64 id = 1;
+}
+message ListStat{
+  repeated StatDTO stats = 1;
+}
+service StatService{
+  rpc getAllStat(google.protobuf.Empty) returns (stream StatDTO);
+  rpc getStatById(getStatByIdParams) returns (StatDTO);
+}
