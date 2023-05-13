@@ -14,8 +14,11 @@ message nullParams{}
 message getStatByIdParams{
   int64 id = 1;
 }
+message ListStat{
+  repeated StatDTO stats = 1;
+}
 service StatService{
-  rpc getAllStat(google.protobuf.Empty) returns (stream StatDTO);
+  rpc getAllStat(google.protobuf.Empty) returns (ListStat);
   rpc getStatById(getStatByIdParams) returns (StatDTO);
 }
 message MessageDTO{

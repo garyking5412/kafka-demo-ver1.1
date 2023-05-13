@@ -2,9 +2,9 @@ package com.example.kafkaproducer.model;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import jakarta.persistence.Entity;
-import lombok.Data;
-
 import java.util.Date;
+
+import lombok.Data;
 
 @Data
 public class StatDTO {
